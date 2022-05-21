@@ -3,6 +3,7 @@
 import psutil
 import re
 import subprocess
+import shutil
 
 from Entities.Entity import Entity
 from ValueFormatter import ValueFormatter
@@ -140,10 +141,18 @@ class NetworkSensor(Entity):
 
     # Signal strenght methods:
     def GetWirelessStrenght_Linux(self):
-        p = subprocess.Popen("iwconfig", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out = p.stdout.read().decode()
-        m = re.findall('(wl.*?) .*?Signal level=(-[0-9]+) dBm', out, re.DOTALL)
-        p.communicate()
+        if shutil.which("iwconfig"):
+            p = subprocess.Popen("iwconfig", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            out = p.stdout.read().decode()
+            m = re.findall('(wl.*?) .*?Signal level=(-[0-9]+) dBm', out, re.DOTALL)
+            p.communicate()
+        # Try nmcli if iwconfig is not available:
+        elif shutil.which("nmcli"):
+            nmcli_command = "nmcli -g in-use,ssid,signal device wifi list"
+            p = subprocess.Popen(nmcli_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+            out = p.stdout.read().decode()
+            m = re.findall('\*:([^:]*):(\d*)', out, re.DOTALL)
+            p.communicate()
         return m
 
     def GetWirelessStrenght_Windows(self):

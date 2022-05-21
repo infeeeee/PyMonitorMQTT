@@ -8,3 +8,4 @@ psutil==5.7.2
 pyscreenshot==2.2
 PyYAML==5.4
 voluptuous
+netifaces
