@@ -1,5 +1,7 @@
 from Entities.Entity import Entity
 import subprocess
+import shutil
+import re
 
 supports_win_brightness = True
 try:
@@ -113,14 +115,22 @@ class BrightnessCommand(Entity):
 
     def GetBrightness_Linux(self):
         try:
-            command = 'xbacklight'
-            process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-            stdout = process.communicate()[0]
-            brightness = float(stdout)
-            return brightness
+            # If brightnessctl available:
+            if shutil.which('brightnessctl'):
+                command = 'brightnessctl'
+                p = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+                out = p.stdout.read().decode()
+                p.communicate()
+                brightness = re.findall('Current brightness: (\d{2,3}) \(', out)[0]
+            # Legacy xbacklight:
+            elif shutil.which('xbacklight'):
+                command = 'xbacklight'
+                process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+                brightness = process.communicate()[0]
+            return float(brightness)
         except:
             raise Exception(
-                'You sure you installed Brightness from Homebrew ? (else try checking you PATH)')
+                'Please install brightnessctl or xbacklight')
 
     def GetBrightness_Win(self):
         if supports_win_brightness:
