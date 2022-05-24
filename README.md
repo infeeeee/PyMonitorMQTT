@@ -1,6 +1,6 @@
 # PyMonitorMQTT
 
-**Please refer to the [new website](https://richibrics.github.io/PyMonitorMQTT/)!**
+**Please refer to the [new website](https://riccardo-briccola.github.io/PyMonitorMQTT/)!**
 
 If you want to use this Software with HomeAssistant, use [this configuration](https://github.com/richibrics/PyMonitorMQTT/blob/master/configuration-homeassistant.yaml) so Hass will automatically detect all the sensors and commands !
 

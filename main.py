@@ -84,7 +84,7 @@ if __name__ == "__main__":
             print("Tried to load: {}".format(config_path))
             print("   See the configuration.yaml.example to get you started\n")
             print("Check the wiki and/or website for help")
-            print("   https://github.com/richibrics/PyMonitorMQTT/wiki - https://richibrics.github.io/PyMonitorMQTT/\n")
+            print("   https://github.com/richibrics/PyMonitorMQTT/wiki - https://riccardo-briccola.github.io/PyMonitorMQTT/\n")
             print("Here's a list of options to get you started....")
             OutputAvailableEntities()
             exit(1)
