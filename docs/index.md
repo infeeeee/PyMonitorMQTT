@@ -7,7 +7,6 @@ The information is sent periodically and the broker can perform certain actions 
 The specialty of script is the high level of customization: for example you can add as much brokers as you want, choose the data send interval, which sensors and commands to enable, on which custom topic, and so much more !
 
 Information form this client are well managed by home automation systems like [HomeAssistant](https://github.com/home-assistant/home-assistant).
-**Companion integration for HomeAssistant can be found [here](https://github.com/richibrics/HassMonitorMqtt)**
 
 ## Why you should use it
 Many home automation systems support MQTT so in no time you can connect the monitor and receive the data.

@@ -14,7 +14,7 @@
       required: No
 
 - name: Brightness
-  compatibility: "mw"
+  compatibility: "mwl"
   short_description: "Brightness level"
   long_description: "This sensor reports the percentage of brightness of the screen."
   topics:
