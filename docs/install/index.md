@@ -38,4 +38,45 @@ sudo apt install wireless-tools brightnessctl
 sudo ln -s `sudo which iwconfig` /usr/local/bin/iwconfig
 ```
 
-Restart PyMonitorMQTT, and it will report netwoek speeds.
+Restart PyMonitorMQTT, and it will report network speeds.
+
+## Use venv
+
+You can install PyMonitorMQTT to a [python venv](https://docs.python.org/3/library/venv.html) (virtual environment). This way the packages required by this program can't mess up your other python based tools, and if you want to reinstall, by deleting the folder you will also remove all dependencies. Nowadays this is the recommended way to install python apps with a lot of dependencies.
+
+Python venv is available to Linux, Windows and Mac.
+
+### Full install and configuration commands on Linux
+
+Example commands on a fresh debian installation:
+
+```shell
+sudo apt install git wireless-tools brightnessctl python3-venv python3-dev
+git clone https://github.com/riccardo-briccola/PyMonitorMQTT
+cd PyMonitorMQTT
+python3 -m venv .
+source ./bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+Configuration: ([Documentation](https://riccardo-briccola.github.io/PyMonitorMQTT/configuration/))
+
+```shell
+cp configuration.yaml.example configuration.yaml
+nano configuration.yaml
+```
+
+Test run:
+
+```shell
+# Activate the venv:
+source ./bin/activate
+./main.py
+# To deactivate the venv:
+deactivate
+```
+
+Create systemd service:
+
+*TODO*
+
