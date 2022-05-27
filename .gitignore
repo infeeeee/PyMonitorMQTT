@@ -5,5 +5,10 @@ configuration.yaml
 venv
 Logs
 
+bin
+lib
+lib64
+share
+
 # Add this file
 !.gitignore
