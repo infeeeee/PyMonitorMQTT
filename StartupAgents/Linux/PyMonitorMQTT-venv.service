@@ -6,7 +6,8 @@ After=network.target network-online.target
 Type=simple
 RemainAfterExit=yes
 # Change path:
-ExecStart=/path/to/PyMonitorMQTT/main.py
+WorkingDirectory=/path/to/PyMonitorMQTT
+ExecStart=/path/to/PyMonitorMQTT/bin/python main.py
 # Change user and group:
 User=user  
 Group=group

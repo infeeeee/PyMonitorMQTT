@@ -89,7 +89,10 @@ class BrightnessCommand(Entity):
         subprocess.Popen(command.split(), stdout=subprocess.PIPE)
 
     def SetBrightness_Linux(self, value):
-        command = 'xbacklight -set ' + str(value)
+        if shutil.which('brightnessctl'):
+            command = 'brightnessctl set ' + str(value)
+        else:
+            command = 'xbacklight -set ' + str(value)
         subprocess.Popen(command.split(), stdout=subprocess.PIPE)
 
     def SetBrightness_Win(self, value):

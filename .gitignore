@@ -9,6 +9,7 @@ bin
 lib
 lib64
 share
+pyvenv.cfg
 
 # Add this file
 !.gitignore
