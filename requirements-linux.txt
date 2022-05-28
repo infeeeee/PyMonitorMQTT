@@ -1,0 +1,11 @@
+EasyProcess==0.3
+entrypoint2==0.2.1
+jeepney==0.4.3
+mss==6.0.0
+paho-mqtt==1.5.0
+Pillow
+psutil==5.7.2
+PyYAML==5.4
+voluptuous
+netifaces
+uptime
