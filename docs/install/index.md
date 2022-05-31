@@ -56,7 +56,7 @@ git clone https://github.com/riccardo-briccola/PyMonitorMQTT
 cd PyMonitorMQTT
 python3 -m venv .
 source ./bin/activate
-python3 -m pip install -r requirements.txt
+python3 -m pip install -r requirements-linux.txt
 ```
 
 Configuration: ([Documentation](https://riccardo-briccola.github.io/PyMonitorMQTT/configuration/))
