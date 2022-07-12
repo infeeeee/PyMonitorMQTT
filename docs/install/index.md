@@ -48,9 +48,10 @@ Python venv is available to Linux, Windows and Mac.
 
 ### Full install and configuration commands on Linux
 
-Example commands on a fresh debian installation:
+Example commands on a fresh debian/raspbian installation:
 
 ```shell
+sudo apt update && sudo apt upgrade -y
 sudo apt install git wireless-tools brightnessctl python3-venv python3-dev
 git clone https://github.com/riccardo-briccola/PyMonitorMQTT
 cd PyMonitorMQTT
@@ -76,7 +77,14 @@ source ./bin/activate
 deactivate
 ```
 
-Create systemd service:
+Edit and create systemd service. This options will use your current user and group:
 
-*TODO*
-
+```shell
+sed -i "s|/path/to/PyMonitorMQTT|$PWD|g" StartupAgents/Linux/PyMonitorMQTT-venv.service
+sed -i "s|user|$USER|g" StartupAgents/Linux/PyMonitorMQTT-venv.service
+sed -i "s|group|`id -gn $USER`|g" StartupAgents/Linux/PyMonitorMQTT-venv.service
+sudo cp StartupAgents/Linux/PyMonitorMQTT-venv.service /etc/systemd/system/PyMonitorMQTT.service
+sudo systemctl daemon-reload
+sudo systemctl enable PyMonitorMQTT.service
+sudo systemctl start PyMonitorMQTT.service
+```
